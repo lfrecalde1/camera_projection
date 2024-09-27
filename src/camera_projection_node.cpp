@@ -75,7 +75,7 @@ void CameraProjectionNode::publishCamera()
     nav_msgs::msg::Odometry camera_odom_msg;
     camera_odom_msg.header.frame_id = world_frame_id_;
     camera_odom_msg.child_frame_id = camera_name_;
-    camera_odom_msg.header.stamp = quadrotor_odometry_.header.stamp;
+    camera_odom_msg.header.stamp = this->get_clock()->now();
 
     // Convert quadrotor state to camera odometry
     QuadrotorPayloadToCameraOdomMsg(camera_pos_, camera_ori_, quadrotor_odometry_, camera_odom_msg);
