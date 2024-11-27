@@ -8,6 +8,8 @@
 #include <eigen3/Eigen/Geometry>
 #include <tf2_ros/transform_broadcaster.h>
 #include <geometry_msgs/msg/point_stamped.hpp>
+#include <cv_bridge/cv_bridge.h>
+#include <opencv2/opencv.hpp>
 
 namespace camera_projection_node
 {

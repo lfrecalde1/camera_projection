@@ -9,6 +9,8 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(cv_bridge REQUIRED)
 
 # List of dependencies
 set(dependencies
@@ -18,7 +20,10 @@ set(dependencies
   nav_msgs
   tf2_ros
   Eigen3
+  cv_bridge
 )
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(${cv_bridge_INCLUDE_DIRS})
 
 # Create a library for the node
 add_library(camera_projection_node SHARED

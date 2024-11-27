@@ -40,12 +40,15 @@ CameraProjectionNode::CameraProjectionNode(const rclcpp::NodeOptions &options)
 
     // Subscriber to /quadrotor/odom
     quadrotor_odom_subscriber_ = this->create_subscription<nav_msgs::msg::Odometry>(
-        "/" + quad_name_ + "/odom", 10, 
+        "/" + quad_name_ + "/ros2_control_odom", 10, 
         std::bind(&CameraProjectionNode::quadrotorOdomCallback, this, std::placeholders::_1));
 
     // Subscriber to /quadrotor/payload/odom
+    //payload_odom_subscriber_ = this->create_subscription<nav_msgs::msg::Odometry>(
+        //"/" + quad_name_ + "/payload/odom_vicon", 10, 
+        //std::bind(&CameraProjectionNode::payloadOdomCallback, this, std::placeholders::_1));
     payload_odom_subscriber_ = this->create_subscription<nav_msgs::msg::Odometry>(
-        "/" + quad_name_ + "/payload/odom", 10, 
+        "/" + quad_name_ + "/payload/odom_vicon", 10, 
         std::bind(&CameraProjectionNode::payloadOdomCallback, this, std::placeholders::_1));
     
     // Publisher for quadrotor/camera/odom
